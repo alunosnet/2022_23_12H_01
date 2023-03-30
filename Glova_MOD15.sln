@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32811.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Glova_MOD15", "Glova_MOD15\Glova_MOD15.csproj", "{4C89AE5C-83DB-47D3-A714-2CB6C2221B10}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4C89AE5C-83DB-47D3-A714-2CB6C2221B10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C89AE5C-83DB-47D3-A714-2CB6C2221B10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C89AE5C-83DB-47D3-A714-2CB6C2221B10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C89AE5C-83DB-47D3-A714-2CB6C2221B10}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C38D9A0A-6BD6-4908-8A99-D2417A28043E}
+	EndGlobalSection
+EndGlobal

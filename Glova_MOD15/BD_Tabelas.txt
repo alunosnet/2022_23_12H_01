@@ -1,0 +1,27 @@
+"create table cliente(
+	                    ncliente int identity primary key,
+	                    nome varchar(40) not null check(len(nome) >= 3),
+	                    codigo_postal varchar(8) check(codigo_postal like '____-___'),
+	                    localidade varchar(100) not null check(localidade in ('Armamar', 'Carregal Do Sal', 'Castro Daire', 'Cinfães', 'Cinfaes', 'Lamego', 'Mangualde', 'Moimenta Da Beira', 'Mortágua', 'Mortagua', 'Nelas', 'Oliveira De Frades', 'Penalva Do Castelo', 'Penedono', 'Resende', 'Santa Comba Dão', 'Santa Comba Dao', 'São João Da Pesqueira', 'Sao Joao Da Pesqueira', 'São Pedro Do Sul', 'Sao Pedro Do Sul', 'Sátão', 'Satao', 'Sernancelhe', 'Tabuaço', 'Tabuaco', 'Tarouca', 'Tondela', 'Vila Nova De Paiva', 'Viseu', 'Vouzela')),
+	                    telefone varchar(9) unique check(len(telefone) = 9),
+	                    email varchar(100) unique check(email like '%@%.%')
+                    );
+
+                    create table prestador(
+	                    nprestador int identity primary key,
+	                    data_contratado date DEFAULT(getdate()),
+	                    nome varchar(40) not null,
+	                    fotografia varbinary(max) not null,
+	                    tipo varchar(100) check(tipo in ('Entrega de Comida', 'Manutenção', 'Taxi')),
+	                    estado bit DEFAULT(0)
+                    );
+
+                    create table servico(
+	                    nservico int identity primary key,
+	                    ncliente int references cliente(ncliente),
+	                    nprestador int references prestador(nprestador),
+	                    tipo varchar(100) check(tipo in ('Entrega de Comida', 'Manutenção', 'Taxi')),
+	                    data_prestado date DEFAULT(getdate()),
+	                    preco money check(preco > 0),
+	                    estado bit DEFAULT(0)
+                    );
