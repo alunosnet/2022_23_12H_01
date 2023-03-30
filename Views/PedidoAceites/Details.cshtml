@@ -1,0 +1,42 @@
+﻿@model ServicosEPedidos_Mod_17E.Models.PedidoAceite
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalhes do pedido</h2>
+
+<div>
+    <h4>PedidoAceite</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdPedido.IdPed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdPedido.IdPed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdPrest.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdPrest.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataPedAc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataPedAc)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdPedAc }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

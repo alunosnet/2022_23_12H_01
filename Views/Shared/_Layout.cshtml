@@ -1,0 +1,84 @@
+﻿@using ServicosEPedidos_Mod_17E.Helper;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Serviços e Pedidos", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+                    @if (Request.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Administrador"))
+                        {
+                            <li>@Html.ActionLink("Utilizadores", "Index", "Utilizadores")</li>
+                            <li>@Html.ActionLink("Pedidos", "Index", "Pedidos")</li>
+                            <li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Consultas</a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Pesquisa", "Index", "Consultas")</li>
+                                    <li>@Html.ActionLink("Pesquisa Dinamica", "PesquisaDinamica", "Consultas")</li>
+                                    <li>@Html.ActionLink("Melhor Cliente", "MelhorCliente", "Consultas")</li>
+                                    <li>@Html.ActionLink("Melhor Prestador", "MelhorPrestador", "Consultas")</li>
+                                </ul>
+                            </li>
+                        }
+                        else if (User.IsInRole("Prestador"))
+                        {
+                            <li>@Html.ActionLink("Ver Pedidos", "Index/" + @Html.UserId(User), "Pedidos")</li>
+                            <li>@Html.ActionLink("Pedidos Aceites", "Index/" + @Html.UserId(User), "PedidoAceites")</li>
+                            // Mudar Para o utilizador ver os pedidos que ele pode aceitar
+                        }
+                        else if (User.IsInRole("Cliente"))
+                        {
+                            <li>@Html.ActionLink("Meus Pedidos", "Index/" + @Html.UserId(User), "Pedidos")</li>
+                            // Mudar Para o utilizador ver os pedidos feitos por ele
+                        }
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                @Html.DisplayName("Olá " + User.Identity.Name)
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Editar perfil", "Edit/" + @Html.UserId(User), "Utilizadores")</li>
+                                <li>@Html.ActionLink("Terminar sessão", "Logout", "Login")</li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Login", "Index", "Login")</li>
+                        <li>@Html.ActionLink("Registo", "Index", "Registo")</li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Serviços e Pedidos</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

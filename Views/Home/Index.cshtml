@@ -1,0 +1,73 @@
+﻿@using ServicosEPedidos_Mod_17E.Helper
+
+@{
+    ViewBag.Title = "Pagina inicial";
+}
+
+<div class="jumbotron">
+    <h1>Serviços</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="~/Public/manutencao.png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Manutenção</h5>
+                <p class="card-text">Tem algum problema em casa? Faça um pedido que nos arranjamos.</p>
+                @if (!Request.IsAuthenticated)
+                {
+                    <a href="~/Login" class="btn btn-primary">Fazer Pedido</a>
+                }
+                else
+                {
+                    <a href="@Url.Action("Create", "Pedidos", new { id = Html.UserId(User), trabalho = "1" })" class="btn btn-primary">Fazer Pedido</a>
+                    //<a href="~/Pedidos/Create/1" class="btn btn-primary">Fazer Pedido</a>
+                }
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-4">
+
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="~/Public/taxi.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Taxi</h5>
+                <p class="card-text">Peça a um taxi para o ir buscar.</p>
+                @if (!Request.IsAuthenticated)
+                {
+                    <a href="~/Login" class="btn btn-primary">Fazer Pedido</a>
+                }
+                else
+                {
+                    <a href="@Url.Action("Create", "Pedidos", new { id = Html.UserId(User), trabalho = "2" })" class="btn btn-primary">Fazer Pedido</a>
+                    //<a href="~/Pedidos/Create/2" class="btn btn-primary">Fazer Pedido</a>
+                }
+
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-4">
+
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="~/Public/entrega.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Entrega</h5>
+                <p class="card-text">Peça a sua comida dos seus lugares preferidos que nos entregamos para si.</p>
+                @if (!Request.IsAuthenticated)
+                 {
+                    <a href="~/Login" class="btn btn-primary">Fazer Pedido</a>
+                 }
+                 else
+                 {
+                    <a href="@Url.Action("Create", "Pedidos", new { id = Html.UserId(User), trabalho = "3" })" class="btn btn-primary">Fazer Pedido</a>
+                    //<a href="~/Pedidos/Create/@Html.UserId(User)" class="btn btn-primary">Fazer Pedido</a>
+                 }
+            </div>
+        </div>
+
+    </div>
+</div>
